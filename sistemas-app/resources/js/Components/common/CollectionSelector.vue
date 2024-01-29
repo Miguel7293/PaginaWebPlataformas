@@ -1,5 +1,6 @@
 <script setup>
-import { Ref } from 'vue';
+import { ref } from 'vue'
+
 defineProps({
     collection:{
         type: Array,
@@ -10,7 +11,7 @@ defineProps({
 const currentSelection = ref(1)
 const selection = ref([])
 
-const handAddToSelection =()=>{
+const handleAddToSelection =()=>{
     selection.value.push(currentSelection)
 }
 </script>
@@ -19,11 +20,11 @@ const handAddToSelection =()=>{
     <select v-model="currentSelection">
         <option v-for="(item, index) in collection" :key="index"> {{ item?.name }}</option>
     </select>
-    <button @click="handAddToSelection">Add</button>
+    <button @click="handleAddToSelection"> Add </button>
     <div>
         <ul>
             <li v-for="(item, index) in selection" :key="index">
-                {{ item}}
+                {{ item?.name}}
             </li>
         </ul>
     </div>
